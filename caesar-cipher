@@ -1,0 +1,33 @@
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
+            'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+            'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+text = input("Type your message:\n").lower()
+shift = int(input("Type the shift number:\n"))
+text = list(text)
+new_word_list = []
+
+
+def encrypt(plain_text, shift_amount):
+    global new_word_list
+    for x in plain_text:
+        new_word_list.append(alphabet[alphabet.index(x) + shift_amount])
+    print(f"The encoded text is {''.join(new_word_list)}")
+
+
+def decode(plain_text, shift_amount):
+    global new_word_list
+    for x in plain_text:
+        new_word_list.append(alphabet[alphabet.index(x) - shift_amount])
+    print(f"The text is {''.join(new_word_list)}")
+
+
+def the_direction(direction):
+    if direction == "encode":
+        encrypt(text, shift)
+    elif direction == "decode":
+        decode(text, shift)
+
+
+the_direction(direction)
