@@ -1,0 +1,62 @@
+import time
+
+
+def add(n1, n2):
+    result = n1 + n2
+    return result
+
+
+def sub(n1, n2):
+    result = n1 - n2
+    return result
+
+
+def mult(n1, n2):
+    result = n1 * n2
+    return result
+
+
+def div(n1, n2):
+    result = n1 / n2
+    return result
+
+
+operations = {"+": add,
+              "-": sub,
+              "*": mult,
+              "/": div
+              }
+
+your_name = input("What is ur name?:\n")
+
+
+def the_start():
+    num1 = float(input("What is the first number?:\n"))
+    continue_calculating = True
+    while continue_calculating:
+
+        num2 = float(input("What is the next number?:\n"))
+        for opration in operations:
+            print(opration)
+        operation_symbol = input("Pick an operation from the list above:\n")
+        calculation_func = operations[operation_symbol]
+        answer = calculation_func(num1, num2)
+        print(f"{num1} {operation_symbol} {num2} = {answer}")
+        continue_calculatinG = input(f"Type 'y' to continue calculating with{answer},"
+                                     f" type 'n' to exit,"
+                                     f"or type 's' to restart:\n")
+        if continue_calculatinG == 'y':
+            continue_calculating = True
+            num1 = answer
+
+        elif continue_calculatinG == 's':
+            print("lets start from the start...Loading")
+            time.sleep(3)
+            the_start()
+
+        elif continue_calculatinG == 'n':
+            print(f"Salut, {your_name}  🖐🖐!")
+            continue_calculating = False
+
+the_start()
+
